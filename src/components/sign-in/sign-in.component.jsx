@@ -30,16 +30,16 @@ export const SignIn = () => {
     };
 
     const handleGoogleSignIn = async () => {
-        if (signingIn) return;
-        setSigningIn(true);
-        try {
-          await signInWithGoogle();
-        } catch (error) {
-          console.error('Google sign-in error:', error);
-        } finally {
-          setSigningIn(false);
-        }
-      };
+      if (signingIn) return;
+      setSigningIn(true);
+      try {
+        await signInWithGoogle();
+      } catch (error) {
+        console.error('Google sign-in error:', error);
+      } finally {
+        setSigningIn(false);
+      }
+    };
 
     return(
         <div className="sign-in">
