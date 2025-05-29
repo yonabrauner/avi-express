@@ -3,11 +3,15 @@ import "./header.styles.scss";
 import { Link } from 'react-router-dom';
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 import { auth } from "../../firebase/firebase.utils";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { CartIcon } from '../cart-icon/cart-icon.component';
+import { CartDropdown } from '../cart-dropdown/cart-dropdown.component';
+import { toggleCart } from "../../redux/cartSlice";
 
 export const Header = () => {
     const currentUser = useSelector((state) => state.user.currentUser);
-    // const useDispatch
+    const isCartOpen = useSelector((state) => state.cart.isCartOpen)
+    const dispatch = useDispatch();
     return (
         <div className="header">
             <Link className='logo-container' to="/">
@@ -21,7 +25,9 @@ export const Header = () => {
                     <div className="option" onClick={() => auth.signOut()}>SIGN OUT</div> 
                     : <Link className="option" to="/signin">SIGN IN</Link>
                 }
+                <CartIcon />
             </div>
+            {isCartOpen ? <CartDropdown /> : null}
         </div>
     )
 }
