@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { HomePage } from './pages/homepage/homepage.component';
 import { ShopPage } from './pages/shop/shop.component';
 import { Header } from './components/header/header.component';
@@ -8,8 +7,9 @@ import { SignInAndSignUp } from './pages/sign-in-and-sign-up/sign-in-and-sign-up
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDoc } from 'firebase/firestore';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentUser } from './redux/userSlice.js';
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -42,13 +42,17 @@ function App() {
     return () => unsubscribe();
   }, [dispatch]);
 
+  const currentUser = useSelector((state) => state.user.currentUser);
+
   return (
     <div className="App">
       <Header/>
       <Routes>
         <Route exact path="/" element={<HomePage/>}/>
         <Route exact path="/shop" element={<ShopPage/>}/>
-        <Route exact path="/signin" element={<SignInAndSignUp/>}/>
+        <Route exact path="/signin" element={
+          currentUser ? <Navigate to='/' replace/> : <SignInAndSignUp/>
+          }/>
       </Routes>
     </div>
   );
