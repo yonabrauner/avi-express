@@ -7,21 +7,40 @@ import { Header } from './components/header/header.component';
 import { SignInAndSignUp } from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { onAuthStateChanged } from 'firebase/auth';
+import { getDoc } from 'firebase/firestore';
+import { useDispatch } from 'react-redux';
+import { setCurrentUser } from './redux/userSlice.js';
 
 function App() {
-  const [currentuser, setCurrentUser] = useState(null);
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (userAuth) => {
       if (userAuth){
         const userRef = await createUserProfileDocument(userAuth);
-        console.log(userRef);
+        const snapshot = await getDoc(userRef);
+        console.log(snapshot.data().createdAt.toDate().toISOString());
+        const createdAtStr = snapshot.data().createdAt.toDate().toISOString();
+        console.log(createdAtStr);
+        console.log("Dispatching user:", {
+          ...snapshot.data(),
+          id: userRef.id,
+          createdAt: createdAtStr,
+        });
+        dispatch(setCurrentUser({
+          ...snapshot.data(),
+          id: userRef.id,
+          createdAt: createdAtStr,
+        }));
       }
-      setCurrentUser(userAuth);
-      createUserProfileDocument(userAuth);
+      else{
+        dispatch(setCurrentUser(null));
+        createUserProfileDocument(userAuth);
+      }
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="App">
