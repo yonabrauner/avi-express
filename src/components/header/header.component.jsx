@@ -6,7 +6,6 @@ import { auth } from "../../firebase/firebase.utils";
 import { useSelector, useDispatch } from "react-redux";
 import { CartIcon } from '../cart-icon/cart-icon.component';
 import { CartDropdown } from '../cart-dropdown/cart-dropdown.component';
-import { toggleCart } from "../../redux/cartSlice";
 
 export const Header = () => {
     const currentUser = useSelector((state) => state.user.currentUser);

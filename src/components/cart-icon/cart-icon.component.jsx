@@ -7,7 +7,6 @@ import { useDispatch, useSelector } from 'react-redux';
 export const CartIcon = () => {
     const dispatch = useDispatch();
     const isCartOpen = useSelector((state) => state.cart.isCartOpen);
-    console.log(isCartOpen);
     return (
         <div className='cart-icon' onClick={() => {dispatch(toggleCart());}}>
             <ShoppingIcon className='shopping-icon'/>
