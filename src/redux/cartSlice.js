@@ -1,12 +1,15 @@
 import {createSlice} from '@reduxjs/toolkit';
 import { addItemToCart } from './cart.utils';
 
-export const cartSlice = createSlice({
-    name: 'cart',
-    initialState: {
+const initialState = {
         isCartOpen: false,
         cartItems: [],
-     },
+        itemCount: 0,
+     };
+
+export const cartSlice = createSlice({
+    name: 'cart',
+    initialState,
     reducers: {
         toggleCart: (state) => {
             state.isCartOpen = !state.isCartOpen;
