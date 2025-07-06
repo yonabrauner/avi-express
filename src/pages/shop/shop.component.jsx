@@ -6,6 +6,7 @@ import { useState } from "react";
 
 export const ShopPage = () => {
     const [collections, setCollections] = useState(SHOP_DATA);
+    
     return(
         <div className="shop-page">
             {

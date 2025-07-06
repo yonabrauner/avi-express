@@ -4,12 +4,14 @@ import { Link } from 'react-router-dom';
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 import { auth } from "../../firebase/firebase.utils";
 import { useSelector } from "react-redux";
+import { selectCurrentUser } from "../../features/user/user.selectors";
 import { CartIcon } from '../cart-icon/cart-icon.component';
 import { CartDropdown } from '../cart-dropdown/cart-dropdown.component';
+import { selectIsCartOpen } from "../../features/cart/cart.selectors";
 
 export const Header = () => {
-    const currentUser = useSelector((state) => state.user.currentUser);
-    const isCartOpen = useSelector((state) => state.cart.isCartOpen)
+    const currentUser = useSelector(selectCurrentUser);
+    const isCartOpen = useSelector(selectIsCartOpen);
     
     return (
         <div className="header">

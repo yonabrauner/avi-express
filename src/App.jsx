@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
-import { HomePage } from './pages/homepage/homepage.component';
-import { ShopPage } from './pages/shop/shop.component';
-import { Header } from './components/header/header.component';
-import { SignInAndSignUp } from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
-import { auth, createUserProfileDocument } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils.js';
 import { onAuthStateChanged } from 'firebase/auth';
 import { getDoc } from 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
-import { setCurrentUser } from './redux/userSlice.js';
+import { setCurrentUser } from './features/user/userSlice.js';
+import { HomePage } from './pages/homepage/homepage.component.jsx';
+import { ShopPage } from './pages/shop/shop.component.jsx';
+import { SignInAndSignUp } from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component.jsx';
+import { CheckoutPage } from './pages/checkout/checkout.component.jsx';
+import { Header } from './components/header/header.component.jsx';
 import './App.css';
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<HomePage/>}/>
         <Route exact path="/shop" element={<ShopPage/>}/>
+        <Route exact path='/checkout' element={<CheckoutPage/>}/>
         <Route exact path="/signin" element={
           currentUser ? <Navigate to='/' replace/> : <SignInAndSignUp/>
           }/>
