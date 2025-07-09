@@ -6,7 +6,20 @@ export const addItemToCart =  (cartItems, itemToAdd) => {
             {...item, quantity: item.quantity + 1}
             : item);
     }
-    else {
-        return [...cartItems, { ...itemToAdd, quantity: 1 }];
+    return [...cartItems, { ...itemToAdd, quantity: 1 }];
+    
+};
+
+export const decreaseItemInCart = (cartItems, itemToDecrease) => {
+    if (itemToDecrease.quantity === 1){
+        return removeItemFromCart(cartItems, itemToDecrease);
     }
+    return cartItems.map(item =>
+        item.id === itemToDecrease.id ?
+        {...item, quantity: item.quantity - 1}
+        : item);
+}
+
+export const removeItemFromCart = (cartItems, itemToRemove) => {
+    return cartItems.filter(item => item.id !== itemToRemove.id);
 };

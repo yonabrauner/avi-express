@@ -11,7 +11,7 @@ export const  CheckoutPage = () => {
     return(
         <div className="checkout-page">
             <div className="checkout-header">
-                <div className="header-block">
+                <div className="header-block product">
                     <span>Product</span>
                 </div>
                 <div className="header-block">
