@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/https//yonabrauner.github.io/avi-express/static/css/main.a5366978.css",
+    "main.js": "/https//yonabrauner.github.io/avi-express/static/js/main.23b3af7a.js",
+    "static/js/453.01e13d5c.chunk.js": "/https//yonabrauner.github.io/avi-express/static/js/453.01e13d5c.chunk.js",
+    "static/media/shopping-bag.svg": "/https//yonabrauner.github.io/avi-express/static/media/shopping-bag.a688874f6f1507316bdfa420328a4a53.svg",
+    "index.html": "/https//yonabrauner.github.io/avi-express/index.html",
+    "static/media/crown.svg": "/https//yonabrauner.github.io/avi-express/static/media/crown.3a4e2b15908e7a4c25343677d232b7e6.svg",
+    "main.a5366978.css.map": "/https//yonabrauner.github.io/avi-express/static/css/main.a5366978.css.map",
+    "main.23b3af7a.js.map": "/https//yonabrauner.github.io/avi-express/static/js/main.23b3af7a.js.map",
+    "453.01e13d5c.chunk.js.map": "/https//yonabrauner.github.io/avi-express/static/js/453.01e13d5c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a5366978.css",
+    "static/js/main.23b3af7a.js"
+  ]
+}
