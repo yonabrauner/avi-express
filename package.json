@@ -2,7 +2,7 @@
   "name": "avi-express",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https//yonabrauner.github.io/avi-express",
+  "homepage": "https://yonabrauner.github.io/avi-express",
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.2",
     "@testing-library/dom": "^10.4.0",
